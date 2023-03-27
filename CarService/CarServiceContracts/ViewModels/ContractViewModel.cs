@@ -23,5 +23,7 @@ namespace CarServiceContracts.ViewModels
 		public int CarId { get; set; }
 		[DisplayName("Номер машины")]
 		public string CarNumber { get; set; } = string.Empty;
+
+		public Dictionary<int, (IServiceModel, double)> ContractServices { get; set; } = new();
 	}
 }

@@ -7,5 +7,6 @@
 		int EmployeeId { get; }
 		int ClientId { get; }
 		int CarId { get; }
+		Dictionary<int, (IServiceModel, double)> ContractServices { get; }
 	}
 }
