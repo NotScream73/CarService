@@ -9,11 +9,15 @@ namespace CarServiceDatabaseImplement
 		{
 			if (optionsBuilder.IsConfigured == false)
 			{
-				optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-JS88CIM\SQLEXPRESS;Initial Catalog=IceCreamShopDatabase;Integrated Security=True;MultipleActiveResultSets=True;;TrustServerCertificate=True");
+				optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=carservice;Username=postgres;Password=A6k9w7l9h3");
 			}
 			base.OnConfiguring(optionsBuilder);
 		}
-
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<ContractService>()
+				.HasKey(c => new { c.ServiceId, c.ContractId });
+		}
 		public virtual DbSet<Car> Cars { set; get; }
 
 		public virtual DbSet<Client> Clients { set; get; }

@@ -1,9 +1,17 @@
+using CarServiceContracts.BusinessLogicsContracts;
+using CarServiceContracts.StoragesContracts;
+using CarServiceDatabaseImplement.Implements;
+using ClientServiceContracts.StoragesContracts;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace CarServiceView
 {
 	internal static class Program
 	{
+		private static ServiceProvider? _serviceProvider;
+		public static ServiceProvider? ServiceProvider => _serviceProvider;
 		/// <summary>
-		///  The main entry point for the application.
+		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
 		static void Main()
@@ -11,7 +19,26 @@ namespace CarServiceView
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
-			Application.Run(new Form1());
+			var services = new ServiceCollection();
+			ConfigureServices(services);
+			_serviceProvider = services.BuildServiceProvider();
+			Application.Run(_serviceProvider.GetRequiredService<Form1>());
+		}
+		private static void ConfigureServices(ServiceCollection services)
+		{
+			services.AddTransient<ICarStorage, CarStorage>();
+			services.AddTransient<IClientStorage, ClientStorage>();
+			services.AddTransient<IContractStorage, ContractStorage>();
+			services.AddTransient<IEmployeeStorage, EmployeeStorage>();
+			services.AddTransient<IServiceStorage, ServiceStorage>();
+/*
+			services.AddTransient<ICarLogic, CarLogic>();
+			services.AddTransient<IClientLogic, ClientLogic>();
+			services.AddTransient<IContractLogic, ContractLogic>();
+			services.AddTransient<IEmployeeLogic, EmployeeLogic>();
+			services.AddTransient<IServiceLogic, ServiceLogic>();*/
+
+			services.AddTransient<Form1>();
 		}
 	}
 }

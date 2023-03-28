@@ -16,6 +16,6 @@ namespace CarServiceContracts.BindingModels
 
 		public int CarId { get; set; }
 
-		public Dictionary<int, (IServiceModel, int)> ContractServices { get; set; } = new();
+		public Dictionary<int, (IServiceModel, double)> ContractServices { get; set; } = new();
 	}
 }

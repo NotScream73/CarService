@@ -4,12 +4,8 @@ namespace CarServiceDatabaseImplement.Models
 {
 	public class ContractService
 	{
-		public int Id { get; set; }
-
-		[Required]
 		public int ContractId { get; set; }
 
-		[Required]
 		public int ServiceId { get; set; }
 
 		[Required]

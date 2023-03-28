@@ -4,7 +4,7 @@ using CarServiceContracts.ViewModels;
 
 namespace CarServiceContracts.BusinessLogicsContracts
 {
-	public interface IServiceModel
+	public interface IServiceLogic
 	{
 		List<ServiceViewModel>? ReadList(ServiceSearchModel? model);
 
