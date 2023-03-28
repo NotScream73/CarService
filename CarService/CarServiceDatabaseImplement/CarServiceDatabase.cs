@@ -1,5 +1,6 @@
 ﻿using CarServiceDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace CarServiceDatabaseImplement
 {
@@ -9,7 +10,8 @@ namespace CarServiceDatabaseImplement
 		{
 			if (optionsBuilder.IsConfigured == false)
 			{
-				optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=carservice;Username=postgres;Password=A6k9w7l9h3");
+				string connectString = ConfigurationManager.AppSettings["connect"];
+				optionsBuilder.UseNpgsql(connectString);
 			}
 			base.OnConfiguring(optionsBuilder);
 		}
