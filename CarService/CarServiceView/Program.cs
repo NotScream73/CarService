@@ -1,3 +1,4 @@
+using CarServiceBusinessLogic.BusinessLogics;
 using CarServiceContracts.BusinessLogicsContracts;
 using CarServiceContracts.StoragesContracts;
 using CarServiceDatabaseImplement.Implements;
@@ -31,12 +32,12 @@ namespace CarServiceView
 			services.AddTransient<IContractStorage, ContractStorage>();
 			services.AddTransient<IEmployeeStorage, EmployeeStorage>();
 			services.AddTransient<IServiceStorage, ServiceStorage>();
-/*
+
 			services.AddTransient<ICarLogic, CarLogic>();
 			services.AddTransient<IClientLogic, ClientLogic>();
 			services.AddTransient<IContractLogic, ContractLogic>();
 			services.AddTransient<IEmployeeLogic, EmployeeLogic>();
-			services.AddTransient<IServiceLogic, ServiceLogic>();*/
+			services.AddTransient<IServiceLogic, ServiceLogic>();
 
 			services.AddTransient<Form1>();
 		}
