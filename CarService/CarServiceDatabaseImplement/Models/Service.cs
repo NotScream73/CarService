@@ -1,20 +1,34 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.ViewModels;
+using CarServiceDatabaseImplement.Models;
 using CarServiceDataModels.Models;
-using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarServiceDatabaseImplement.Models
 {
-	public class Service : IServiceModel
+	/// <summary>
+	/// Таблица услуг
+	/// </summary>
+	public partial class Service : IServiceModel
 	{
+		/// <summary>
+		/// Уникальный идентификатор услуги
+		/// </summary>
 		public int Id { get; set; }
-		[Required]
-		public string Title { get; set; } = string.Empty;
-		[Required]
+
+		/// <summary>
+		/// Название услуги
+		/// </summary>
+		public string Title { get; set; } = null!;
+
+		/// <summary>
+		/// Стоимость услуги
+		/// </summary>
 		public double Price { get; set; }
 		[ForeignKey("ServiceId")]
-		public virtual List<ContractService> ContractServices { get; set; } = new();
+		public virtual List<ServiceContract> ContractServices { get; set; } = new();
 
 		public static Service? Create(ServiceBindingModel model)
 		{

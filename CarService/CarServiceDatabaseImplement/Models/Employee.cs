@@ -1,22 +1,38 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.ViewModels;
-using CarServiceDataModels.Models;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarServiceDatabaseImplement.Models
 {
-	public class Employee : IEmployeeModel
+	/// <summary>
+	/// Таблица сотрудников
+	/// </summary>
+	public partial class Employee
 	{
+		/// <summary>
+		/// Уникальный идентификатор сотрудника
+		/// </summary>
 		public int Id { get; set; }
-		[Required]
-		public string Name { get; set; } = string.Empty;
-		[Required]
-		public string Surname { get; set; } = string.Empty;
-		[Required]
-		public string Patronymic { get; set; } = string.Empty;
-		[Required]
-		public string Phone { get; set; } = string.Empty;
+
+		/// <summary>
+		/// Имя сотрудника
+		/// </summary>
+		public string Name { get; set; } = null!;
+
+		/// <summary>
+		/// Фамилия сотрудника
+		/// </summary>
+		public string Surname { get; set; } = null!;
+
+		/// <summary>
+		/// Отчество сотрудника
+		/// </summary>
+		public string? Patronymic { get; set; }
+
+		/// <summary>
+		/// Номер телефона сотрудника
+		/// </summary>
+		public string Phone { get; set; } = null!;
 		[ForeignKey("EmployeeId")]
 		public virtual List<Contract> Contracts { get; set; } = new();
 

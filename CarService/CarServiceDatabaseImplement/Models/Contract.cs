@@ -1,50 +1,70 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.ViewModels;
 using CarServiceDataModels.Models;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarServiceDatabaseImplement.Models
 {
-	public class Contract : IContractModel
+	/// <summary>
+	/// Таблица договоров
+	/// </summary>
+	public partial class Contract : IContractModel
 	{
+		/// <summary>
+		/// Уникальный идентификатор договора
+		/// </summary>
 		public int Id { get; set; }
-		[Required]
-		public DateTime DateCreate { get; set; }
-		[Required]
+
+		/// <summary>
+		/// Дата оформления договора
+		/// </summary>
+		public DateTime Date { get; set; }
+
+		/// <summary>
+		/// Общая стоимость оказанных услуг
+		/// </summary>
 		public double Cost { get; set; }
-		[Required]
+
+		/// <summary>
+		/// Идентификатор сотрудника
+		/// </summary>
 		public int EmployeeId { get; set; }
-		[Required]
+
+		/// <summary>
+		/// Идентификатор клиента
+		/// </summary>
 		public int ClientId { get; set; }
-		[Required]
+
+		/// <summary>
+		/// Идентификатор машины
+		/// </summary>
 		public int CarId { get; set; }
 
-		public virtual Employee Employee { get; set; }
+		public virtual Car Car { get; set; } = null!;
 
-		public virtual Client Client { get; set; }
+		public virtual Client Client { get; set; } = null!;
 
-		public virtual Car Car { get; set; }
-		
-		private Dictionary<int, (IServiceModel, double)>? _contractServices = null;
+		public virtual Employee Employee { get; set; } = null!;
+
+		private Dictionary<int, (IServiceModel, double)>? _serviceContracts = null;
 
 		[NotMapped]
-		public Dictionary<int, (IServiceModel, double)> ContractServices
+		public Dictionary<int, (IServiceModel, double)> ServiceContracts
 		{
 			get
 			{
-				if (_contractServices == null)
+				if (_serviceContracts == null)
 				{
-					_contractServices = Services
+					_serviceContracts = Services
 							.ToDictionary(recPC => recPC.ServiceId, recPC => (recPC.Service as IServiceModel, recPC.Price));
 				}
-				return _contractServices;
+				return _serviceContracts;
 			}
 		}
 
 		[ForeignKey("ContractId")]
-		public virtual List<ContractService> Services { get; set; } = new();
-		public static Contract? Create(CarServiceDatabase context, ContractBindingModel? model)
+		public virtual List<ServiceContract> Services { get; set; } = new();
+		public static Contract? Create(CarserviceContext context, ContractBindingModel? model)
 		{
 			if (model == null)
 			{
@@ -53,12 +73,12 @@ namespace CarServiceDatabaseImplement.Models
 			return new Contract()
 			{
 				Id = model.Id,
-				DateCreate = model.DateCreate,
+				Date = model.Date,
 				Cost = model.Cost,
 				EmployeeId = model.EmployeeId,
 				ClientId = model.ClientId,
 				CarId = model.CarId,
-				Services = model.ContractServices.Select(x => new ContractService
+				Services = model.ServiceContracts.Select(x => new ServiceContract
 				{
 					Service = context.Services.First(y => y.Id == x.Key),
 					Price = x.Value.Item2
@@ -81,32 +101,32 @@ namespace CarServiceDatabaseImplement.Models
 			ClientId = ClientId,
 			ClientName = Client.Name,
 			Cost = Cost,
-			DateCreate = DateCreate,
+			Date = Date,
 			CarId = CarId,
 			CarNumber = Car.Number,
 			EmployeeId = EmployeeId,
 			EmployeeName = Employee.Name
 		};
 
-		public void UpdateServices(CarServiceDatabase context, ContractBindingModel model)
+		public void UpdateServices(CarserviceContext context, ContractBindingModel model)
 		{
-			var contractServices = context.ContractServices.Where(rec => rec.ContractId == model.Id).ToList();
+			var contractServices = context.ServiceContracts.Where(rec => rec.ContractId == model.Id).ToList();
 			if (contractServices != null && contractServices.Count > 0)
 			{   // удалили те, которых нет в модели
-				context.ContractServices.RemoveRange(contractServices.Where(rec => !model.ContractServices.ContainsKey(rec.ServiceId)));
+				context.ServiceContracts.RemoveRange(contractServices.Where(rec => !model.ServiceContracts.ContainsKey(rec.ServiceId)));
 				context.SaveChanges();
 				// обновили количество у существующих записей
 				foreach (var updateService in contractServices)
 				{
-					updateService.Price = model.ContractServices[updateService.ServiceId].Item2;
-					model.ContractServices.Remove(updateService.ServiceId);
+					updateService.Price = model.ServiceContracts[updateService.ServiceId].Item2;
+					model.ServiceContracts.Remove(updateService.ServiceId);
 				}
 				context.SaveChanges();
 			}
 			var contract = context.Contracts.First(x => x.Id == Id);
-			foreach (var cs in model.ContractServices)
+			foreach (var cs in model.ServiceContracts)
 			{
-				context.ContractServices.Add(new ContractService
+				context.ServiceContracts.Add(new ServiceContract
 				{
 					Contract = contract,
 					Service = context.Services.First(x => x.Id == cs.Key),
@@ -114,7 +134,7 @@ namespace CarServiceDatabaseImplement.Models
 				});
 				context.SaveChanges();
 			}
-			_contractServices = null;
+			_serviceContracts = null;
 		}
 	}
 }

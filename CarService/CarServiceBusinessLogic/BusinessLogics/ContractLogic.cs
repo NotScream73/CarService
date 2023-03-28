@@ -76,9 +76,9 @@ namespace CarServiceBusinessLogic.BusinessLogics
 			{
 				return;
 			}
-			if (model.DateCreate == DateTime.MinValue)
+			if (model.Date == DateTime.MinValue)
 			{
-				throw new ArgumentNullException("Нет даты создания чека", nameof(model.DateCreate));
+				throw new ArgumentNullException("Нет даты создания чека", nameof(model.Date));
 			}
 			if (model.Cost <= 0)
 			{

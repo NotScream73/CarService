@@ -23,7 +23,7 @@ namespace CarServiceView
 			var services = new ServiceCollection();
 			ConfigureServices(services);
 			_serviceProvider = services.BuildServiceProvider();
-			Application.Run(_serviceProvider.GetRequiredService<Form1>());
+			//Application.Run(_serviceProvider.GetRequiredService<Form1>());
 		}
 		private static void ConfigureServices(ServiceCollection services)
 		{
@@ -39,7 +39,6 @@ namespace CarServiceView
 			services.AddTransient<IEmployeeLogic, EmployeeLogic>();
 			services.AddTransient<IServiceLogic, ServiceLogic>();
 
-			services.AddTransient<Form1>();
 		}
 	}
 }

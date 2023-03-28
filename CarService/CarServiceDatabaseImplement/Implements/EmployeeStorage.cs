@@ -10,7 +10,7 @@ namespace CarServiceDatabaseImplement.Implements
 	{
 		public EmployeeViewModel? Delete(EmployeeBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			var element = context.Employees.FirstOrDefault(rec => rec.Id == model.Id);
 			if (element != null)
 			{
@@ -27,7 +27,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return null;
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Employees
 					.FirstOrDefault(x => (!string.IsNullOrEmpty(model.Phone) && x.Phone == model.Phone) ||
 										(model.Id.HasValue && x.Id == model.Id))
@@ -40,7 +40,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return new();
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Employees
 					.Where(x => x.Phone.Contains(model.Phone))
 					.Select(x => x.GetViewModel)
@@ -49,7 +49,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public List<EmployeeViewModel> GetFullList()
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Employees
 					.Select(x => x.GetViewModel)
 					.ToList();
@@ -62,7 +62,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return null;
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			context.Employees.Add(newEmployee);
 			context.SaveChanges();
 			return newEmployee.GetViewModel;
@@ -70,7 +70,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public EmployeeViewModel? Update(EmployeeBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			var employee = context.Employees.FirstOrDefault(x => x.Id == model.Id);
 			if (employee == null)
 			{

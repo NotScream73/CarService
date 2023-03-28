@@ -8,7 +8,7 @@ namespace CarServiceContracts.BindingModels
 
 		public double Cost { get; set; }
 
-		public DateTime DateCreate { get; set; } = DateTime.Now;
+		public DateTime Date { get; set; } = DateTime.Now;
 
 		public int EmployeeId { get; set; }
 
@@ -16,6 +16,6 @@ namespace CarServiceContracts.BindingModels
 
 		public int CarId { get; set; }
 
-		public Dictionary<int, (IServiceModel, double)> ContractServices { get; set; } = new();
+		public Dictionary<int, (IServiceModel, double)> ServiceContracts { get; set; } = new();
 	}
 }

@@ -1,16 +1,24 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.ViewModels;
 using CarServiceDataModels.Models;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarServiceDatabaseImplement.Models
 {
-	public class Car : ICarModel
+	/// <summary>
+	/// Таблица машин
+	/// </summary>
+	public partial class Car /*: ICarModel*/
 	{
+		/// <summary>
+		/// Уникальный идентификатор машины
+		/// </summary>
 		public int Id { get; set; }
-		[Required]
-		public string Number { get; set; } = string.Empty;
+
+		/// <summary>
+		/// Номер машины
+		/// </summary>
+		public string Number { get; set; } = null!;
 		[ForeignKey("CarId")]
 		public virtual List<Contract> Contracts { get; set; } = new();
 

@@ -1,23 +1,39 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.ViewModels;
 using CarServiceDataModels.Models;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
 
 namespace CarServiceDatabaseImplement.Models
 {
-	public class Client : IClientModel
+	/// <summary>
+	/// Таблица клиентов
+	/// </summary>
+	public partial class Client : IClientModel
 	{
+		/// <summary>
+		/// Уникальный идентификатор клиента
+		/// </summary>
 		public int Id { get; set; }
-		[Required]
-		public string Name { get; set; } = string.Empty;
-		[Required]
-		public string Surname { get; set; } = string.Empty;
-		[Required]
-		public string Patronymic { get; set; } = string.Empty;
-		[Required]
-		public string Phone { get; set; } = string.Empty;
+
+		/// <summary>
+		/// Имя клиента
+		/// </summary>
+		public string Name { get; set; } = null!;
+
+		/// <summary>
+		/// Фамилия клиента
+		/// </summary>
+		public string Surname { get; set; } = null!;
+
+		/// <summary>
+		/// Отчество клиента
+		/// </summary>
+		public string? Patronymic { get; set; }
+
+		/// <summary>
+		/// Номер телефона клиента
+		/// </summary>
+		public string Phone { get; set; } = null!;
 		[ForeignKey("ClientId")]
 		public virtual List<Contract> Contracts { get; set; } = new();
 		public static Client Create(ClientBindingModel model)

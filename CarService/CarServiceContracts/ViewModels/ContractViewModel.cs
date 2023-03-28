@@ -8,7 +8,7 @@ namespace CarServiceContracts.ViewModels
 		[DisplayName("Номер")]
 		public int Id { get; set; }
 		[DisplayName("Дата оформления")]
-		public DateTime DateCreate { get; set; } = DateTime.Now;
+		public DateTime Date { get; set; } = DateTime.Now;
 		[DisplayName("Стоимость")]
 		public double Cost { get; set; }
 
@@ -24,6 +24,6 @@ namespace CarServiceContracts.ViewModels
 		[DisplayName("Номер машины")]
 		public string CarNumber { get; set; } = string.Empty;
 
-		public Dictionary<int, (IServiceModel, double)> ContractServices { get; set; } = new();
+		public Dictionary<int, (IServiceModel, double)> ServiceContracts { get; set; } = new();
 	}
 }

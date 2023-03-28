@@ -10,7 +10,7 @@ namespace CarServiceDatabaseImplement.Implements
 	{
 		public ClientViewModel? Delete(ClientBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			var element = context.Clients.FirstOrDefault(rec => rec.Id == model.Id);
 			if (element != null)
 			{
@@ -27,7 +27,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return null;
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Clients
 					.FirstOrDefault(x => (!string.IsNullOrEmpty(model.Phone) && x.Phone == model.Phone) ||
 										(model.Id.HasValue && x.Id == model.Id))
@@ -40,7 +40,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return new();
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Clients
 					.Where(x => x.Phone.Contains(model.Phone))
 					.Select(x => x.GetViewModel)
@@ -49,7 +49,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public List<ClientViewModel> GetFullList()
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Clients
 					.Select(x => x.GetViewModel)
 					.ToList();
@@ -62,7 +62,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return null;
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			context.Clients.Add(newClient);
 			context.SaveChanges();
 			return newClient.GetViewModel;
@@ -70,7 +70,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public ClientViewModel? Update(ClientBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			var client = context.Clients.FirstOrDefault(x => x.Id == model.Id);
 			if (client == null)
 			{

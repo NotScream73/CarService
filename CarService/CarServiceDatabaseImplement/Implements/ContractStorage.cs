@@ -11,7 +11,7 @@ namespace CarServiceDatabaseImplement.Implements
 	{
 		public ContractViewModel? Delete(ContractBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			var element = context.Contracts
 				.Include(x => x.Services)
 				.Include(x => x.Car)
@@ -33,7 +33,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return null;
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Contracts
 				.Include(x => x.Car)
 				.Include(x => x.Client)
@@ -50,7 +50,7 @@ namespace CarServiceDatabaseImplement.Implements
 			{
 				return null;
 			}
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Contracts
 					.Include(x => x.Car)
 					.Include(x => x.Client)
@@ -65,7 +65,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public List<ContractViewModel> GetFullList()
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			return context.Contracts
 					.Include(x => x.Car)
 					.Include(x => x.Client)
@@ -79,7 +79,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public ContractViewModel? Insert(ContractBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			var newContract = Contract.Create(context, model);
 			if (newContract == null)
 			{
@@ -99,7 +99,7 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public ContractViewModel? Update(ContractBindingModel model)
 		{
-			using var context = new CarServiceDatabase();
+			using var context = new CarserviceContext();
 			using var transaction = context.Database.BeginTransaction();
 			try
 			{

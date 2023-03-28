@@ -2,11 +2,11 @@
 {
 	public interface IContractModel : IId
 	{
-		DateTime DateCreate { get; }
+		DateTime Date { get; }
 		double Cost { get; }
 		int EmployeeId { get; }
 		int ClientId { get; }
 		int CarId { get; }
-		Dictionary<int, (IServiceModel, double)> ContractServices { get; }
+		Dictionary<int, (IServiceModel, double)> ServiceContracts { get; }
 	}
 }
