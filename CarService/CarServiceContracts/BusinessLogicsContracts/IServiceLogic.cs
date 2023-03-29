@@ -16,5 +16,6 @@ namespace CarServiceContracts.BusinessLogicsContracts
 
 		bool Delete(ServiceBindingModel model);
 		long AddTest();
+		List<ReportViewModel> GetMostPopular();
 	}
 }

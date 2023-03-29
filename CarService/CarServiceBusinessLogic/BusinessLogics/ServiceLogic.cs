@@ -3,11 +3,6 @@ using CarServiceContracts.BusinessLogicsContracts;
 using CarServiceContracts.SearchModels;
 using CarServiceContracts.StoragesContracts;
 using CarServiceContracts.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarServiceBusinessLogic.BusinessLogics
 {
@@ -41,6 +36,11 @@ namespace CarServiceBusinessLogic.BusinessLogics
 				return false;
 			}
 			return true;
+		}
+
+		public List<ReportViewModel> GetMostPopular()
+		{
+			return _serviceStorage.GetMostPopularList();
 		}
 
 		public ServiceViewModel? ReadElement(ServiceSearchModel? model)

@@ -18,5 +18,6 @@ namespace CarServiceContracts.StoragesContracts
 
 		ServiceViewModel? Delete(ServiceBindingModel model);
 		long AddTest();
+		List<ReportViewModel> GetMostPopularList();
 	}
 }

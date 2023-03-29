@@ -3,6 +3,7 @@ using CarServiceContracts.SearchModels;
 using CarServiceContracts.StoragesContracts;
 using CarServiceContracts.ViewModels;
 using CarServiceDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace CarServiceDatabaseImplement.Implements
@@ -115,6 +116,21 @@ namespace CarServiceDatabaseImplement.Implements
 			context.SaveChanges();
 			stopwatch.Stop();
 			return stopwatch.ElapsedMilliseconds;
+		}
+
+		public List<ReportViewModel> GetMostPopularList()
+		{
+			using var context = new CarserviceContext();
+			return context.ServiceContracts
+						  .Include(x => x.Service)
+						  .GroupBy(x => x.Service.Title)
+						  .Select(x => new ReportViewModel()
+						  {
+							  Title = x.Key,
+							  TotalCount = x.Sum(x => x.Price)
+						  })
+						  .OrderByDescending(x => x.TotalCount)
+						  .ToList();
 		}
 	}
 }
