@@ -1,5 +1,6 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.ViewModels;
+using CarServiceDataModels.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarServiceDatabaseImplement.Models
@@ -7,7 +8,7 @@ namespace CarServiceDatabaseImplement.Models
 	/// <summary>
 	/// Таблица сотрудников
 	/// </summary>
-	public partial class Employee
+	public partial class Employee : IEmployeeModel
 	{
 		/// <summary>
 		/// Уникальный идентификатор сотрудника

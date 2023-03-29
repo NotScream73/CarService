@@ -13,6 +13,12 @@ namespace CarServiceBusinessLogic.BusinessLogics
 		{
 			_contractStorage = contractStorage;
 		}
+
+		public bool AddTest(int count)
+		{
+			return _contractStorage.AddTest(count);
+		}
+
 		public bool Create(ContractBindingModel model)
 		{
 			CheckModel(model);

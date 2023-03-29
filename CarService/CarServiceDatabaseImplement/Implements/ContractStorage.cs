@@ -3,12 +3,58 @@ using CarServiceContracts.SearchModels;
 using CarServiceContracts.StoragesContracts;
 using CarServiceContracts.ViewModels;
 using CarServiceDatabaseImplement.Models;
+using CarServiceDataModels.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarServiceDatabaseImplement.Implements
 {
 	public class ContractStorage : IContractStorage
 	{
+		public bool AddTest(int count)
+		{
+			using var context = new CarserviceContext();
+			List<int> carIds = context.Cars.Select(x => x.Id).ToList();
+			List<int> clientIds = context.Clients.Select(x => x.Id).ToList();
+			List<int> employeeIds = context.Employees.Select(x => x.Id).ToList();
+			Random rand = new Random();
+			int maxId = context.Contracts.Count() > 0 ? context.Contracts.Max(x => x.Id) + 1 : 1;
+			for (int i = 0; i < count; i++)
+			{
+				int countService = rand.Next(1, 10);
+				var serviceContracts = context.Services.ToList();
+				Dictionary<int, (IServiceModel, double)> temp = new();
+				for (int j = 0; j < countService; j++)
+				{
+					var te = serviceContracts[rand.Next(0, serviceContracts.Count)];
+					if (temp.ContainsKey(te.Id))
+					{
+						temp[te.Id] = (te, te.Price);
+					}
+					else
+					{
+						temp.Add(te.Id, (te, te.Price));
+					}
+				}
+				var newContract = Contract.Create(context, new()
+				{
+					Id = maxId,
+					CarId = carIds[rand.Next(0, carIds.Count)],
+					ClientId = clientIds[rand.Next(0, clientIds.Count)],
+					EmployeeId = employeeIds[rand.Next(0, employeeIds.Count)],
+					ServiceContracts = temp,
+					Cost = 1.1 * temp.Sum(x => x.Value.Item2)
+				});
+				maxId++;
+				if (newContract == null)
+				{
+					continue;
+				}
+				context.Contracts.Add(newContract);
+			}
+			context.SaveChanges();
+			return true;
+		}
+
 		public ContractViewModel? Delete(ContractBindingModel model)
 		{
 			using var context = new CarserviceContext();

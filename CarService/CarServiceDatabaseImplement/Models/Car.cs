@@ -8,7 +8,7 @@ namespace CarServiceDatabaseImplement.Models
 	/// <summary>
 	/// Таблица машин
 	/// </summary>
-	public partial class Car /*: ICarModel*/
+	public partial class Car : ICarModel
 	{
 		/// <summary>
 		/// Уникальный идентификатор машины

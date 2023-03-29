@@ -50,7 +50,7 @@ namespace CarServiceView
 			services.AddTransient<FormContracts>();
 			services.AddTransient<FormContract>();
 			services.AddTransient<FormContractService>();
-
+			services.AddTransient<FormTest>();
 		}
 	}
 }

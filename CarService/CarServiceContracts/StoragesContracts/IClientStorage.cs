@@ -17,5 +17,6 @@ namespace ClientServiceContracts.StoragesContracts
 		ClientViewModel? Update(ClientBindingModel model);
 
 		ClientViewModel? Delete(ClientBindingModel model);
+		bool AddTest(int count);
 	}
 }

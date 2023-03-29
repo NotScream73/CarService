@@ -81,5 +81,36 @@ namespace CarServiceDatabaseImplement.Implements
 			context.SaveChanges();
 			return service.GetViewModel;
 		}
+		public bool AddTest()
+		{
+			using var context = new CarserviceContext();
+			List<string> listTitle = new();
+			StreamReader f = new StreamReader("Titles.txt");
+			while (!f.EndOfStream)
+			{
+				listTitle.Add(f.ReadLine());
+			}
+			f.Close();
+			Random rand = new();
+			int maxId = context.Services.Count() > 0 ? context.Services.Max(x => x.Id) + 1 : 1;
+			for (int i = 0; i < listTitle.Count; i++)
+			{
+				int randPrice = rand.Next(1000, 999999);
+				var newService = Service.Create(new ServiceBindingModel()
+				{
+					Id = maxId,
+					Price = randPrice,
+					Title = listTitle[i]
+				}) ;
+				maxId++;
+				if (newService == null)
+				{
+					continue;
+				}
+				context.Services.Add(newService);
+			}
+			context.SaveChanges();
+			return true;
+		}
 	}
 }

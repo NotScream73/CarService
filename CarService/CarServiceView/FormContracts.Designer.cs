@@ -34,6 +34,7 @@
 			ClientsToolStripMenuItem = new ToolStripMenuItem();
 			EmployeesToolStripMenuItem = new ToolStripMenuItem();
 			ServicesToolStripMenuItem = new ToolStripMenuItem();
+			testToolStripMenuItem = new ToolStripMenuItem();
 			dataGridView = new DataGridView();
 			buttonRef = new Button();
 			buttonAdd = new Button();
@@ -44,7 +45,7 @@
 			// menuStrip
 			// 
 			menuStrip.ImageScalingSize = new Size(20, 20);
-			menuStrip.Items.AddRange(new ToolStripItem[] { справочникиToolStripMenuItem });
+			menuStrip.Items.AddRange(new ToolStripItem[] { справочникиToolStripMenuItem, testToolStripMenuItem });
 			menuStrip.Location = new Point(0, 0);
 			menuStrip.Name = "menuStrip";
 			menuStrip.Padding = new Padding(5, 2, 0, 2);
@@ -62,30 +63,37 @@
 			// CarsToolStripMenuItem
 			// 
 			CarsToolStripMenuItem.Name = "CarsToolStripMenuItem";
-			CarsToolStripMenuItem.Size = new Size(180, 22);
+			CarsToolStripMenuItem.Size = new Size(140, 22);
 			CarsToolStripMenuItem.Text = "Машины";
 			CarsToolStripMenuItem.Click += CarsToolStripMenuItem_Click;
 			// 
 			// ClientsToolStripMenuItem
 			// 
 			ClientsToolStripMenuItem.Name = "ClientsToolStripMenuItem";
-			ClientsToolStripMenuItem.Size = new Size(180, 22);
+			ClientsToolStripMenuItem.Size = new Size(140, 22);
 			ClientsToolStripMenuItem.Text = "Клиенты";
 			ClientsToolStripMenuItem.Click += ClientsToolStripMenuItem_Click;
 			// 
 			// EmployeesToolStripMenuItem
 			// 
 			EmployeesToolStripMenuItem.Name = "EmployeesToolStripMenuItem";
-			EmployeesToolStripMenuItem.Size = new Size(180, 22);
+			EmployeesToolStripMenuItem.Size = new Size(140, 22);
 			EmployeesToolStripMenuItem.Text = "Сотрудники";
 			EmployeesToolStripMenuItem.Click += EmployeesToolStripMenuItem_Click;
 			// 
 			// ServicesToolStripMenuItem
 			// 
 			ServicesToolStripMenuItem.Name = "ServicesToolStripMenuItem";
-			ServicesToolStripMenuItem.Size = new Size(180, 22);
+			ServicesToolStripMenuItem.Size = new Size(140, 22);
 			ServicesToolStripMenuItem.Text = "Услуги";
 			ServicesToolStripMenuItem.Click += ServicesToolStripMenuItem_Click;
+			// 
+			// testToolStripMenuItem
+			// 
+			testToolStripMenuItem.Name = "testToolStripMenuItem";
+			testToolStripMenuItem.Size = new Size(42, 20);
+			testToolStripMenuItem.Text = "Тест";
+			testToolStripMenuItem.Click += testToolStripMenuItem_Click;
 			// 
 			// dataGridView
 			// 
@@ -152,5 +160,6 @@
 		private ToolStripMenuItem EmployeesToolStripMenuItem;
 		private ToolStripMenuItem ServicesToolStripMenuItem;
 		private Button buttonAdd;
+		private ToolStripMenuItem testToolStripMenuItem;
 	}
 }

@@ -35,6 +35,11 @@ namespace CarServiceBusinessLogic.BusinessLogics
 			return true;
 		}
 
+		public bool AddTest(int count)
+		{
+			return _clientStorage.AddTest(count);
+		}
+
 		public ClientViewModel? ReadElement(ClientSearchModel? model)
 		{
 			if (model == null)

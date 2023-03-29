@@ -19,7 +19,10 @@ namespace CarServiceBusinessLogic.BusinessLogics
 		{
 			_serviceStorage = serviceStorage;
 		}
-
+		public bool AddTest()
+		{
+			return _serviceStorage.AddTest();
+		}
 		public bool Create(ServiceBindingModel model)
 		{
 			CheckModel(model);

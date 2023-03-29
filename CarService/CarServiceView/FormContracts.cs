@@ -133,5 +133,14 @@ namespace CarServiceView
 				form.ShowDialog();
 			}
 		}
+
+		private void testToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var service = Program.ServiceProvider?.GetService(typeof(FormTest));
+			if (service is FormTest form)
+			{
+				form.ShowDialog();
+			}
+		}
 	}
 }

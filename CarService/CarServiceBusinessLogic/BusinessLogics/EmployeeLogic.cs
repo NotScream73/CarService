@@ -15,6 +15,11 @@ namespace CarServiceBusinessLogic.BusinessLogics
 			_employeeStorage = employeeStorage;
 		}
 
+		public bool AddTest(int count)
+		{
+			return _employeeStorage.AddTest(count);
+		}
+
 		public bool Create(EmployeeBindingModel model)
 		{
 			CheckModel(model);

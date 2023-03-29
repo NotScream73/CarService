@@ -25,6 +25,10 @@ namespace CarServiceBusinessLogic.BusinessLogics
 			return true;
 		}
 
+		public bool AddTest(int count)
+		{
+			return _carStorage.AddTest(count);
+		}
 		public bool Delete(CarBindingModel model)
 		{
 			CheckModel(model, false);

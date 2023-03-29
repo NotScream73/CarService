@@ -17,5 +17,6 @@ namespace CarServiceContracts.StoragesContracts
 		CarViewModel? Update(CarBindingModel model);
 
 		CarViewModel? Delete(CarBindingModel model);
+		bool AddTest(int count);
 	}
 }

@@ -81,5 +81,35 @@ namespace CarServiceDatabaseImplement.Implements
 			context.SaveChanges();
 			return car.GetViewModel;
 		}
+		public bool AddTest(int count)
+		{
+			using var context = new CarserviceContext();
+			List<char> listChar = new(){ 'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х' };
+			Random rand = new Random();
+			int maxId = context.Cars.Count() > 0 ? context.Cars.Max(x => x.Id) + 1 : 1;
+			for (int i = 0; i < count; i++)
+			{
+				int randNumber1 = rand.Next(0, 10);
+				int randNumber2 = rand.Next(0, 10);
+				int randNumber3 = rand.Next(0, 10);
+				int randNumber4 = rand.Next(0, 10);
+				int randNumber5 = rand.Next(0, 10);
+				int randNumber6 = rand.Next(0, 10);
+				string result = listChar[rand.Next(0,listChar.Count)] + randNumber1.ToString() + randNumber2.ToString() + randNumber3.ToString() + listChar[rand.Next(0, listChar.Count)] + listChar[rand.Next(0, listChar.Count)] + randNumber4.ToString() + randNumber5.ToString() + randNumber6.ToString();
+				var newCar = Car.Create(new()
+				{
+					Id = maxId,
+					Number = result
+				});
+				maxId++;
+				if (newCar == null)
+				{
+					continue;
+				}
+				context.Cars.Add(newCar);
+			}
+			context.SaveChanges();
+			return true;
+		}
 	}
 }
