@@ -5,12 +5,13 @@ using CarServiceContracts.ViewModels;
 using CarServiceDatabaseImplement.Models;
 using CarServiceDataModels.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace CarServiceDatabaseImplement.Implements
 {
 	public class ContractStorage : IContractStorage
 	{
-		public bool AddTest(int count)
+		public long AddTest(int count)
 		{
 			using var context = new CarserviceContext();
 			List<int> carIds = context.Cars.Select(x => x.Id).ToList();
@@ -51,8 +52,11 @@ namespace CarServiceDatabaseImplement.Implements
 				}
 				context.Contracts.Add(newContract);
 			}
+			Stopwatch stopwatch = new();
+			stopwatch.Start();
 			context.SaveChanges();
-			return true;
+			stopwatch.Stop();
+			return stopwatch.ElapsedMilliseconds;
 		}
 
 		public ContractViewModel? Delete(ContractBindingModel model)

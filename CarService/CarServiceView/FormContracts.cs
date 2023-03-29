@@ -1,5 +1,6 @@
 ﻿using CarServiceContracts.BindingModels;
 using CarServiceContracts.BusinessLogicsContracts;
+using System.Diagnostics;
 
 namespace CarServiceView
 {
@@ -22,7 +23,11 @@ namespace CarServiceView
 		{
 			try
 			{
+				Stopwatch stopwatch = new();
+				stopwatch.Start();
 				var list = _logic.ReadList(null);
+				stopwatch.Stop();
+				MessageBox.Show(stopwatch.ElapsedMilliseconds.ToString());
 				if (list != null)
 				{
 					dataGridView.DataSource = list;

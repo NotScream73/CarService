@@ -3,6 +3,7 @@ using CarServiceContracts.SearchModels;
 using CarServiceContracts.StoragesContracts;
 using CarServiceContracts.ViewModels;
 using CarServiceDatabaseImplement.Models;
+using System.Diagnostics;
 
 namespace CarServiceDatabaseImplement.Implements
 {
@@ -81,7 +82,7 @@ namespace CarServiceDatabaseImplement.Implements
 			context.SaveChanges();
 			return service.GetViewModel;
 		}
-		public bool AddTest()
+		public long AddTest()
 		{
 			using var context = new CarserviceContext();
 			List<string> listTitle = new();
@@ -109,8 +110,11 @@ namespace CarServiceDatabaseImplement.Implements
 				}
 				context.Services.Add(newService);
 			}
+			Stopwatch stopwatch = new();
+			stopwatch.Start();
 			context.SaveChanges();
-			return true;
+			stopwatch.Stop();
+			return stopwatch.ElapsedMilliseconds;
 		}
 	}
 }

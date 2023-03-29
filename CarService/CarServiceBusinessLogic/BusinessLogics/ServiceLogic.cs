@@ -19,7 +19,7 @@ namespace CarServiceBusinessLogic.BusinessLogics
 		{
 			_serviceStorage = serviceStorage;
 		}
-		public bool AddTest()
+		public long AddTest()
 		{
 			return _serviceStorage.AddTest();
 		}

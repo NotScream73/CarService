@@ -15,6 +15,6 @@ namespace CarServiceContracts.BusinessLogicsContracts
 		bool Update(EmployeeBindingModel model);
 
 		bool Delete(EmployeeBindingModel model);
-		bool AddTest(int count);
+		long AddTest(int count);
 	}
 }

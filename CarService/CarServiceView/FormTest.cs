@@ -27,11 +27,7 @@ namespace CarServiceView
 				try
 				{
 					var operationResult = _clientLogic.AddTest(int.Parse(textBoxClientCount.Text));
-					if (!operationResult)
-					{
-						throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
-					}
-					MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Сохранение прошло успешно, заняло времени: " + operationResult, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				catch (Exception ex)
 				{
@@ -52,11 +48,7 @@ namespace CarServiceView
 				try
 				{
 					var operationResult = _employeeLogic.AddTest(int.Parse(textBoxEmployeeCount.Text));
-					if (!operationResult)
-					{
-						throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
-					}
-					MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Сохранение прошло успешно, заняло времени: " + operationResult, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				catch (Exception ex)
 				{
@@ -75,11 +67,7 @@ namespace CarServiceView
 			try
 			{
 				var operationResult = _serviceLogic.AddTest();
-				if (!operationResult)
-				{
-					throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
-				}
-				MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("Сохранение прошло успешно, заняло времени: " + operationResult, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			catch (Exception ex)
 			{
@@ -95,11 +83,7 @@ namespace CarServiceView
 				try
 				{
 					var operationResult = _carLogic.AddTest(int.Parse(textBoxCarCount.Text));
-					if (!operationResult)
-					{
-						throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
-					}
-					MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Сохранение прошло успешно, заняло времени: " + operationResult, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				catch (Exception ex)
 				{
@@ -120,11 +104,7 @@ namespace CarServiceView
 				try
 				{
 					var operationResult = _contractLogic.AddTest(int.Parse(textBoxContractCount.Text));
-					if (!operationResult)
-					{
-						throw new Exception("Ошибка при сохранении. Дополнительная информация в логах.");
-					}
-					MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Сохранение прошло успешно, заняло времени: " + operationResult, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				catch (Exception ex)
 				{

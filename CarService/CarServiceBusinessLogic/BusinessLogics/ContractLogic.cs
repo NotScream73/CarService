@@ -14,7 +14,7 @@ namespace CarServiceBusinessLogic.BusinessLogics
 			_contractStorage = contractStorage;
 		}
 
-		public bool AddTest(int count)
+		public long AddTest(int count)
 		{
 			return _contractStorage.AddTest(count);
 		}
