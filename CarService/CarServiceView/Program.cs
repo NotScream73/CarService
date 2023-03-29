@@ -23,7 +23,7 @@ namespace CarServiceView
 			var services = new ServiceCollection();
 			ConfigureServices(services);
 			_serviceProvider = services.BuildServiceProvider();
-			//Application.Run(_serviceProvider.GetRequiredService<Form1>());
+			Application.Run(_serviceProvider.GetRequiredService<FormContracts>());
 		}
 		private static void ConfigureServices(ServiceCollection services)
 		{
@@ -38,6 +38,18 @@ namespace CarServiceView
 			services.AddTransient<IContractLogic, ContractLogic>();
 			services.AddTransient<IEmployeeLogic, EmployeeLogic>();
 			services.AddTransient<IServiceLogic, ServiceLogic>();
+
+			services.AddTransient<FormCars>();
+			services.AddTransient<FormCar>();
+			services.AddTransient<FormClients>();
+			services.AddTransient<FormClient>();
+			services.AddTransient<FormEmployees>();
+			services.AddTransient<FormEmployee>();
+			services.AddTransient<FormService>();
+			services.AddTransient<FormServices>();
+			services.AddTransient<FormContracts>();
+			services.AddTransient<FormContract>();
+			services.AddTransient<FormContractService>();
 
 		}
 	}

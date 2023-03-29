@@ -57,12 +57,13 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public EmployeeViewModel? Insert(EmployeeBindingModel model)
 		{
+			using var context = new CarserviceContext();
+			model.Id = context.Employees.Count() > 0 ? context.Employees.Max(x => x.Id) + 1 : 1;
 			var newEmployee = Employee.Create(model);
 			if (newEmployee == null)
 			{
 				return null;
 			}
-			using var context = new CarserviceContext();
 			context.Employees.Add(newEmployee);
 			context.SaveChanges();
 			return newEmployee.GetViewModel;

@@ -57,12 +57,13 @@ namespace CarServiceDatabaseImplement.Implements
 
 		public CarViewModel? Insert(CarBindingModel model)
 		{
+			using var context = new CarserviceContext();
+			model.Id = context.Cars.Count() > 0 ? context.Cars.Max(x => x.Id) + 1 : 1;
 			var newCar = Car.Create(model);
 			if (newCar == null)
 			{
 				return null;
 			}
-			using var context = new CarserviceContext();
 			context.Cars.Add(newCar);
 			context.SaveChanges();
 			return newCar.GetViewModel;
