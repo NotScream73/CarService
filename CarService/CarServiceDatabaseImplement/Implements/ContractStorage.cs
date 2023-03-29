@@ -80,6 +80,7 @@ namespace CarServiceDatabaseImplement.Implements
 		public ContractViewModel? Insert(ContractBindingModel model)
 		{
 			using var context = new CarserviceContext();
+			model.Id = context.Contracts.Count() > 0 ? context.Contracts.Max(x => x.Id) + 1 : 1;
 			var newContract = Contract.Create(context, model);
 			if (newContract == null)
 			{
