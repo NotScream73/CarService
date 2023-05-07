@@ -4,19 +4,20 @@ using CarServiceContracts.ViewModels;
 
 namespace CarServiceContracts.StoragesContracts
 {
-	public interface IContractStorage
-	{
-		List<ContractViewModel> GetFullList();
+    public interface IContractStorage
+    {
+        List<ContractViewModel> GetFullList();
 
-		List<ContractViewModel> GetFilteredList(ContractSearchModel model);
+        List<ContractViewModel> GetFilteredList(ContractSearchModel model);
 
-		ContractViewModel? GetElement(ContractSearchModel model);
+        ContractViewModel? GetElement(ContractSearchModel model);
 
-		ContractViewModel? Insert(ContractBindingModel model);
+        ContractViewModel? Insert(ContractBindingModel model);
 
-		ContractViewModel? Update(ContractBindingModel model);
+        ContractViewModel? Update(ContractBindingModel model);
 
-		ContractViewModel? Delete(ContractBindingModel model);
-		long AddTest(int count);
-	}
+        ContractViewModel? Delete(ContractBindingModel model);
+        bool InsertMany(List<ContractViewModel> model);
+        long AddTest(int count);
+    }
 }

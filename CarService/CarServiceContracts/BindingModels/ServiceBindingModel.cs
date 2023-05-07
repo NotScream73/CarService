@@ -2,12 +2,13 @@
 
 namespace CarServiceContracts.BindingModels
 {
-	public class ServiceBindingModel : IServiceModel
-	{
-		public int Id { get; set; }
+    public class ServiceBindingModel : IServiceModel
+    {
+        public int Id { get; set; }
+        public string MId { get; set; }
 
-		public string Title { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
 
-		public double Price { get; set; }
-	}
+        public double Price { get; set; }
+    }
 }

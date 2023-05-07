@@ -4,17 +4,18 @@ using CarServiceContracts.ViewModels;
 
 namespace CarServiceContracts.BusinessLogicsContracts
 {
-	public interface IEmployeeLogic
-	{
-		List<EmployeeViewModel>? ReadList(EmployeeSearchModel? model);
+    public interface IEmployeeLogic
+    {
+        List<EmployeeViewModel>? ReadList(EmployeeSearchModel? model);
 
-		EmployeeViewModel? ReadElement(EmployeeSearchModel? model);
+        EmployeeViewModel? ReadElement(EmployeeSearchModel? model);
 
-		bool Create(EmployeeBindingModel model);
+        bool Create(EmployeeBindingModel model);
 
-		bool Update(EmployeeBindingModel model);
+        bool Update(EmployeeBindingModel model);
 
-		bool Delete(EmployeeBindingModel model);
-		long AddTest(int count);
-	}
+        bool Delete(EmployeeBindingModel model);
+        bool AddAll(List<EmployeeViewModel> model);
+        long AddTest(int count);
+    }
 }

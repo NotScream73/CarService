@@ -4,18 +4,19 @@ using CarServiceContracts.ViewModels;
 
 namespace CarServiceContracts.BusinessLogicsContracts
 {
-	public interface IServiceLogic
-	{
-		List<ServiceViewModel>? ReadList(ServiceSearchModel? model);
+    public interface IServiceLogic
+    {
+        List<ServiceViewModel>? ReadList(ServiceSearchModel? model);
 
-		ServiceViewModel? ReadElement(ServiceSearchModel? model);
+        ServiceViewModel? ReadElement(ServiceSearchModel? model);
 
-		bool Create(ServiceBindingModel model);
+        bool Create(ServiceBindingModel model);
 
-		bool Update(ServiceBindingModel model);
+        bool Update(ServiceBindingModel model);
 
-		bool Delete(ServiceBindingModel model);
-		long AddTest();
-		List<ReportViewModel> GetMostPopular();
-	}
+        bool Delete(ServiceBindingModel model);
+        bool AddAll(List<ServiceViewModel> model);
+        long AddTest();
+        List<ReportViewModel> GetMostPopular();
+    }
 }

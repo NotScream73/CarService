@@ -20,6 +20,7 @@
     <ProjectReference Include="..\CarServiceBusinessLogic\CarServiceBusinessLogic.csproj" />
     <ProjectReference Include="..\CarServiceContracts\CarServiceContracts.csproj" />
     <ProjectReference Include="..\CarServiceDatabaseImplement\CarServiceDatabaseImplement.csproj" />
+    <ProjectReference Include="..\CarServiceMongoDBImplement\CarServiceMongoDBImplement.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,8 @@
 ﻿namespace CarServiceDataModels.Models
 {
-	public interface IServiceModel : IId
-	{
-		string Title { get; }
-		double Price { get; }
-	}
+    public interface IServiceModel : IId
+    {
+        string Title { get; }
+        double Price { get; }
+    }
 }

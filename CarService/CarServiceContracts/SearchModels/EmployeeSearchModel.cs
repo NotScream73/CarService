@@ -1,9 +1,10 @@
 ﻿namespace CarServiceContracts.SearchModels
 {
-	public class EmployeeSearchModel
-	{
-		public int? Id { get; set; }
+    public class EmployeeSearchModel
+    {
+        public int? Id { get; set; }
 
-		public string Phone { get; set; } = string.Empty;
-	}
+        public string MId { get; set; }
+        public string Phone { get; set; } = string.Empty;
+    }
 }

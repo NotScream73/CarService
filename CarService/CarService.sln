@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarServiceContracts", "CarS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarServiceDatabaseImplement", "CarServiceDatabaseImplement\CarServiceDatabaseImplement.csproj", "{E93F6177-A362-4AF6-8136-57BF718483A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarServiceBusinessLogic", "CarServiceBusinessLogic\CarServiceBusinessLogic.csproj", "{6A33CDE6-A61B-47BD-B784-103D642BDB9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarServiceBusinessLogic", "CarServiceBusinessLogic\CarServiceBusinessLogic.csproj", "{6A33CDE6-A61B-47BD-B784-103D642BDB9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarServiceMongoDBImplement", "CarServiceMongoDBImplement\CarServiceMongoDBImplement.csproj", "{35483D25-58EA-443A-A1B3-CCA82F4E266C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6A33CDE6-A61B-47BD-B784-103D642BDB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A33CDE6-A61B-47BD-B784-103D642BDB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A33CDE6-A61B-47BD-B784-103D642BDB9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35483D25-58EA-443A-A1B3-CCA82F4E266C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35483D25-58EA-443A-A1B3-CCA82F4E266C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35483D25-58EA-443A-A1B3-CCA82F4E266C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35483D25-58EA-443A-A1B3-CCA82F4E266C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

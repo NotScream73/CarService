@@ -1,7 +1,7 @@
 ﻿namespace CarServiceDataModels
 {
-	public interface IId
-	{
-		int Id { get; }
-	}
+    public interface IId
+    {
+        int Id { get; }
+    }
 }

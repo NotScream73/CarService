@@ -3,12 +3,13 @@ using System.ComponentModel;
 
 namespace CarServiceContracts.ViewModels
 {
-	public class ServiceViewModel : IServiceModel
-	{
-		public int Id { get; set; }
-		[DisplayName("Название")]
-		public string Title { get; set; } = string.Empty;
-		[DisplayName("Стоимость")]
-		public double Price { get; set; }
-	}
+    public class ServiceViewModel : IServiceModel
+    {
+        public int Id { get; set; }
+        public string MId { get; set; }
+        [DisplayName("Название")]
+        public string Title { get; set; } = string.Empty;
+        [DisplayName("Стоимость")]
+        public double Price { get; set; }
+    }
 }

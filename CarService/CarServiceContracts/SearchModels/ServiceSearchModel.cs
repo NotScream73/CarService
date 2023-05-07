@@ -1,11 +1,10 @@
-﻿using System.Reflection;
-
-namespace CarServiceContracts.SearchModels
+﻿namespace CarServiceContracts.SearchModels
 {
-	public class ServiceSearchModel
-	{
-		public int? Id { get; set; }
+    public class ServiceSearchModel
+    {
+        public int? Id { get; set; }
+        public string MId { get; set; }
 
-		public string? Title { get; set; }
-	}
+        public string? Title { get; set; }
+    }
 }
